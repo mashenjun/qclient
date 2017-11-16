@@ -23,4 +23,4 @@ func main() {
 }
 ```
 
-Note: if response code/200 != 1 it will raise a error.
+Note: if response code/100 != 2 it will raise a error.
