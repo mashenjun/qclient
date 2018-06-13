@@ -9,6 +9,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"time"
+	"fmt"
 
 	"github.com/qiniu/bytes/seekable"
 )
@@ -43,7 +44,7 @@ func (client *Client) Send(method, absurl, contentType string, timeout time.Dura
 
 	data, err = ioutil.ReadAll(response.Body)
 	if response.StatusCode/100 != 2 {
-		err = errors.New(string(data))
+		err = errors.New(fmt.Sprintf("X-Reqid:%s %s", response.Header.Get("X-Reqid"),data))
 		data = nil
 	}
 
